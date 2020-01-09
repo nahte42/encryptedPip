@@ -9,15 +9,17 @@ using namespace std;
 
 class Pipeline{
 		private:
-			typedef int(Pipeline::*FP)(int );
+			typedef int(Pipeline::*FP)(int &);
 			FP hashes[5]; 
 			stack<FP> deHashes;
 			Host system1;
 			Target system2;	
 		
 		public:
+			Pipeline();
 			void sendmessage(Host, Target);
 			int decrypt();
+			int test(int &n);
 };
 
 #endif
