@@ -5,21 +5,15 @@
 
 
 Pipeline::Pipeline(){
-	hashes[0] = &Pipeline::test;
-	hashes[1] = &Pipeline::test;
-	hashes[2] = &Pipeline::test;
-	hashes[3] = &Pipeline::test;
-	hashes[4] = &Pipeline::test;
+	hashes[0] = &Pipeline::hash0;
+	hashes[1] = &Pipeline::hash1;
+	hashes[2] = &Pipeline::hash2;
+	hashes[3] = &Pipeline::hash3;
+	hashes[4] = &Pipeline::hash4;
+		
+	System system1("192.168");
+	System system2("192.167");
 	
-	int g = 9;
-	
-	(this->*hashes[0])(g);
-	
-}
-
-
-int Pipeline::test(int &n){
-	cout<<"Test: "<<n<<endl;
-	
-	return 0;
+	systems.push_back(system1);
+	systems.push_back(system2);
 }
