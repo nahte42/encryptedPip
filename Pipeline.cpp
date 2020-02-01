@@ -17,3 +17,31 @@ Pipeline::Pipeline(){
 	systems.push_back(system1);
 	systems.push_back(system2);
 }
+
+//Send Message:
+void Pipeline::sendmessage(string host, string target){
+	
+	
+}
+
+//Making Dinky "Hashes"
+void hash0 (int& message){
+	message++;
+}
+
+void hash1 (int& message){
+	message*=2;
+	
+}
+void hash2 (int& message){
+	message += 45;
+	
+}
+
+void hash3 (int& message){
+	message += message / 2;
+}
+
+void hash4 (int& message){
+	message --;
+}

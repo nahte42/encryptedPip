@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 #include "Systems.h"
+#include <vector>
 using namespace std;
 
 #ifndef PIPELINE_H
@@ -9,7 +10,7 @@ using namespace std;
 
 class Pipeline{
 		private:
-			typedef int(Pipeline::*FP)(int &);
+			typedef void(Pipeline::*FP)(int &);
 			FP hashes[5]; 
 			vector<System> systems;
 		

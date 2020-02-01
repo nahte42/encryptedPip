@@ -27,7 +27,7 @@ class System{
 	public:
 		System(string name_address){ IP = name_address; }
 		int readMessage(){return message;}
-		void stage_message(){cin >> message; cin >> trgt};
+		void stage_message(){cin >> message; cin >> trgt;}
 		int decode();
 		int dehash0(int &);
 		int dehash1(int &);
