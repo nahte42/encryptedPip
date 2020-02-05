@@ -10,20 +10,20 @@ using namespace std;
 
 class Pipeline{
 		private:
-			typedef void(Pipeline::*FP)(int &);
-			FP hashes[5]; 
+			typedef void(Pipeline::*FP)(long long int &);
+			FP hashes[5];
 			vector<System> systems;
-		
+
 		public:
 			Pipeline();
 			void sendmessage(string host, string target);
 			int decrypt();
 			int test(int &n);
-			void hash0 (int& message);
-			void hash1 (int& message);
-			void hash2 (int& message);
-			void hash3 (int& message);
-			void hash4 (int& message);
+			void hash0 (long long int & message);
+			void hash1 (long long int & message);
+			void hash2 (long long int & message);
+			void hash3 (long long int & message);
+			void hash4 (long long int & message);
 };
 
 #endif

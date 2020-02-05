@@ -17,23 +17,28 @@ class System{
 	private:
 		string IP;
 		string trgt;
-		int message;//will be changed to Template format once it works
-		int beg; 	//where to begin decryption
-		int rng;	//how many times to cycle
-		typedef int(System::*FP)(int &);
+		long long int message;//will be changed to Template format once it works
+		long long int beg; 	//where to begin decryption
+		long long int rng;	//how many times to cycle
+		typedef void(System::*FP)(long long int &);
 		FP de_Hashes[5];
 		stack<FP> deHashes;
-		
+
 	public:
-		System(string name_address){ IP = name_address; }
-		int readMessage(){return message;}
+		System(string name_address){ 	IP = name_address; de_Hashes[0] = &System::dehash0;
+																	de_Hashes[1] = &System::dehash1; de_Hashes[2] = &System::dehash2;
+																	de_Hashes[3] = &System::dehash3; de_Hashes[4] = &System::dehash4;}
+		void set_message(long long int msg) {message = msg;}
+		long long int readMessage(){return message;}
 		void stage_message(){cin >> message; cin >> trgt;}
-		int decode();
-		int dehash0(int &);
-		int dehash1(int &);
-		int dehash2(int &);
-		int dehash3(int &);
-		int dehash4(int &);
+		string get_sysName(){return IP;}
+		void push_hash(int hash){deHashes.push(de_Hashes[hash]);}
+		void decode(long long int &);
+		void dehash0(long long int &);
+		void dehash1(long long int &);
+		void dehash2(long long int &);
+		void dehash3(long long int &);
+		void dehash4(long long int &);
 };
 
 #endif

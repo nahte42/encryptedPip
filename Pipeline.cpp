@@ -1,6 +1,7 @@
 #include "Pipeline.h"
 #include <functional>
 #include <cstdlib>
+#include <time.h>
 
 
 
@@ -10,38 +11,62 @@ Pipeline::Pipeline(){
 	hashes[2] = &Pipeline::hash2;
 	hashes[3] = &Pipeline::hash3;
 	hashes[4] = &Pipeline::hash4;
-		
+
 	System system1("192.168");
 	System system2("192.167");
-	
+
 	systems.push_back(system1);
 	systems.push_back(system2);
 }
 
 //Send Message:
 void Pipeline::sendmessage(string host, string target){
-	
-	
+	cout<<"Starting send message:\n";
+	cout<<"Host is: "<<host<<endl;
+	cout<<"Target is: "<<target<<endl;
+	srand(time(NULL));
+	int h;
+	int t;
+	for(int i = 0; i < systems.size(); i++){
+		if(systems[i].get_sysName() == host)
+			h = i;
+		if(systems[i].get_sysName() == target)
+			t = i;
+	}
+	cout<<"Found targets:\n";
+	cout<<"Stage Message for sending\n";
+	systems[h].stage_message();
+	long long int message =  systems[h].readMessage();
+	cout<<"Message before hashing: "<<message<<endl;
+	int hsh;
+	for(int i = 0; i < 10; i++){
+		hsh = rand()%5;
+		(*this.*hashes[hsh])(message);
+		systems[t].push_hash(hsh);
+	}
+	cout<<"Hashed Message Is: "<<message<<endl;
+	systems[t].decode(message);
+	cout<<"Decoded Message: "<<systems[t].readMessage()<<endl;;
 }
 
 //Making Dinky "Hashes"
-void hash0 (int& message){
+void Pipeline::hash0 (long long int & message){
 	message++;
 }
 
-void hash1 (int& message){
+void Pipeline::hash1 (long long int & message){
 	message*=2;
-	
+
 }
-void hash2 (int& message){
+void Pipeline::hash2 (long long int & message){
 	message += 45;
-	
+
 }
 
-void hash3 (int& message){
-	message += message / 2;
+void Pipeline::hash3 (long long int & message){
+	message *= message;
 }
 
-void hash4 (int& message){
+void Pipeline::hash4 (long long int & message){
 	message --;
 }
