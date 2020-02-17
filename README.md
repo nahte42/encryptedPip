@@ -7,3 +7,5 @@ the target system the functions to decrypt the information. The info cannot be d
 till it hits the target system.
 
 Will work for integers, doubles, and strings
+
+LARGEST VALUE FOR INTEGER ENCRYPTION IS 999999999999999

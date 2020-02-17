@@ -36,7 +36,7 @@ void Pipeline::sendmessage(string host, string target){
 	cout<<"Found targets:\n";
 	cout<<"Stage Message for sending\n";
 	systems[h].stage_message();
-	long long int message =  systems[h].readMessage();
+	unsigned long long int message =  systems[h].readMessage();
 	cout<<"Message before hashing: "<<message<<endl;
 	int hsh;
 	for(int i = 0; i < 10; i++){
@@ -50,23 +50,23 @@ void Pipeline::sendmessage(string host, string target){
 }
 
 //Making Dinky "Hashes"
-void Pipeline::hash0 (long long int & message){
+void Pipeline::hash0 (unsigned long long int & message){
 	message++;
 }
 
-void Pipeline::hash1 (long long int & message){
+void Pipeline::hash1 (unsigned long long int & message){
 	message*=2;
 
 }
-void Pipeline::hash2 (long long int & message){
+void Pipeline::hash2 (unsigned long long int & message){
 	message += 45;
 
 }
 
-void Pipeline::hash3 (long long int & message){
-	message *= message;
+void Pipeline::hash3 (unsigned long long int & message){
+	message *= 20;
 }
 
-void Pipeline::hash4 (long long int & message){
+void Pipeline::hash4 (unsigned long long int & message){
 	message --;
 }

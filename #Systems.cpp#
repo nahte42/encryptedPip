@@ -10,7 +10,7 @@ void System::dehash1(unsigned long long int  &message){
 }
 
 void System::dehash2(unsigned long long int  &message){
-  message -= 45;k
+  message -= 45;
 }
 
 void System::dehash3(unsigned long long int  &message){
